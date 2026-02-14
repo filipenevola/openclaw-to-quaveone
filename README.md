@@ -160,3 +160,39 @@ Next steps:
 3. Paste your gateway token in the token field
 4. Configure your providers
 ```
+
+## Running Commands Inside the Container
+
+If you have shell access to the running pod, OpenClaw is installed at `/app`.
+You can run any OpenClaw CLI command from there:
+
+```bash
+cd /app
+node openclaw.mjs <command> [options]
+```
+
+### Examples
+
+**Start the gateway manually:**
+
+```bash
+node openclaw.mjs gateway --allow-unconfigured --bind lan
+```
+
+**Approve a Telegram pairing request:**
+
+```bash
+node openclaw.mjs pairing approve telegram <CODE>
+```
+
+**Restart OpenClaw (kill the running process and let the container restart it):**
+
+```bash
+pkill -f "node openclaw.mjs"
+```
+
+**Show available commands:**
+
+```bash
+node openclaw.mjs --help
+```
